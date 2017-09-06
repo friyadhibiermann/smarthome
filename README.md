@@ -5,6 +5,6 @@
 <img src="images/musicplayer.png"></img>
 <img src="images/setting account.PNG"></img>
 <img src="images/setting timer saklar.PNG"></img>
-<img src="startup.PNG"></img>
-<img src="uciconfig.PNG"></img>
-<img src="videoplayer.PNG"></img>
+<img src="images/startup.PNG"></img>
+<img src="images/uciconfig.PNG"></img>
+<img src="images/videoplayer.PNG"></img>
