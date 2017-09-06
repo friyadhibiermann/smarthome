@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsen/css/font_awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.min.css">
+    <script src="lib/onsen/js/onsenui.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <ons-page>
+        <ons-tabbar class="tab-bar__button tab-bar--top-border__button" position="bottom">
+            <ons-tab class="tab-bar" page="main.html" label="main" icon="ion-home, material:md-home" active>
+            </ons-tab>
+            <ons-tab class="tab-bar" page="camera.html" label="Cctv" icon="md-camera" active-icon="md-face">
+            </ons-tab>
+            <ons-tab class="tab-bar" page="music.html" label="music" icon="ion-play" active-icon="md-face">
+            </ons-tab>
+            <ons-tab class="tab-bar" page="video.html" label="Video" icon="ion-ios-videocam" active-icon="md-face">
+            </ons-tab>
+			<ons-tab class="tab-bar" onclick="setlistserver();" page="setting.html" label="setting" icon="ion-gear-b" active-icon="md-face">
+            </ons-tab>
+        </ons-tabbar>
+    </ons-page>
+    <template id="main.html">
+        <ons-page id="Tab1">
+            <ons-splitter>
+                <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+            </ons-splitter>
+            <template id="home.html">
+                <ons-page modifier="full_bg img-circle ratio pulse" >
+                    <div class="navigation-bar navigation-bar--noshadow">
+                        <div class="navigation-bar__left">
+                            <span onclick="fn.open();" class="toolbar-button--quiet">
+                                <img src="img/fdi.png" width="32px" height="32px"><img>
+                            </span>
+                        </div>
+                        <div class="navigation-bar__center">
+                            Menu
+                        </div>
+                        <div class="navigation-bar__right">
+                            <span id="login" onclick="showModal();" class="toolbar-button--quiet">Login</span>
+                        </div>
+                    </div>
+                    <ons-list>
+                        <div id="switch"></div>
+                    </ons-list>
+                    <ons-modal direction="up">
+                        <div style="text-align: center">
+                            <div id="loginform" style="text-align: center; margin-top: 30px;">
+                                <span>
+                                    <input id="username" class="text-input--material" placeholder="Username" type="text" required>
+                                    <br /><br />
+                                    <input id="password" class="text-input--material" placeholder="Password" type="password" required>
+                                    <br /><br />
+                                    <input id="address" class="text-input--material" placeholder="192.168.1.1" type="text" required>
+									<br /><br />
+                                    <input id="servernanme" class="text-input--material" placeholder="MyServer" type="text" required>
+                                </span>
+                                <p style="margin-top: 30px;">
+                                   <ons-button class="login1" onclick="login();">Sign in</ons-button>
+								   <ons-button class="login1" onclick="AccountLocal();">Simpan</ons-button>
+                                   <ons-button class="login1" onclick="closemodel();">Close</ons-button>
+								   <div id="inputserver"><div>
+                                 </p>
+                            </div>
+                        </div>
+                    </ons-modal>
+                </ons-page>
+            </template>
+            <ons-toast>
+                This is an Onsen Toast!<button>Hoge</button>
+            </ons-toast>
+        </ons-page>
+    </template>
+    <template id="camera.html">
+        <ons-page id="Tab2">
+            <div class="navigation-bar navigation-bar--noshadow">
+                <div class="navigation-bar__center">
+                    Camera
+                </div>
+            </div>
+			<div id="cctv"></div>
+        </ons-page>
+    </template>
+    <template id="music.html">
+        <ons-page id="Tab2">
+            <div class="navigation-bar navigation-bar--noshadow">
+                <div class="navigation-bar__center">
+                    Music
+                </div>
+            </div>
+				<div class="centerImage css3gallery">
+					<img src="img/fdi.png" class="img-circle" align="middle" width="180" height="180">
+				</div>
+                <div style="text-align: center; margin-top: 20px;">
+					<audio id='audio' preload='auto' tabindex='0' controls mute type='audio/mpeg'></audio>
+                </div>
+            <div class="dialog" style="margin-top: 160px;>
+                <div class="dialog-container">
+                    <div class="page">
+						<ons-list-header>Play list</ons-list-header>
+						<ol class='playlist scroll'>
+							<div id="list"></div>
+						</ol>
+                    </div>
+                </div>
+            </div>
+        </ons-page>
+    </template>
+    <template id="video.html">
+       <ons-page id="Tab3">
+            <div class="navigation-bar navigation-bar--noshadow">
+                <div class="navigation-bar__center">
+                    Video
+                </div>
+            </div>
+                <div style="text-align: center; margin-top: 50px;">
+					<video id='video' class='videoarea' preload='auto' controls mute ></video>
+                </div>
+            <div class="dialog" style="margin-top: 120px;>
+                <div class="dialog-container">
+                    <div class="page">
+						<ons-list-header>Play list</ons-list-header>
+						<ol class='playlistv scroll'>
+							<div id="videolist"></div>
+						</ol>
+                    </div>
+                </div>
+            </div> 
+        </ons-page>
+    </template>
+	<template id="setting.html">
+       <ons-page id="Tab4">
+            <div class="navigation-bar navigation-bar--noshadow">
+                <div class="navigation-bar__center">
+                    Setting
+                </div>
+            </div>
+			<div class="spacetop">
+				<ons-list modifier="inset">
+					<div data-toggle="collapse" data-target="#setname" aria-expanded="false" aria-controls="setname">
+						<ons-list-header>
+							<ons-icon icon="ion-android-arrow-dropdown" size="32px"></ons-icon>
+							Nama Saklar
+						</ons-list-header>
+					</div>
+					<div class="collapse sw" id="setname"></div>
+					<div data-toggle="collapse" data-target="#settime" aria-expanded="false" aria-controls="settime">
+						<ons-list-header>
+							<ons-icon icon="ion-android-arrow-dropdown" size="32px"></ons-icon>
+							Status Timer
+							</a>
+						</ons-list-header>
+					</div>
+					<div class="collapse tm" id="settime"></div>
+					<div data-toggle="collapse" data-target="#setintm" aria-expanded="false" aria-controls="setintm">
+						<ons-list-header>
+							<ons-icon icon="ion-android-arrow-dropdown" size="32px"></ons-icon>
+							Atur Timer
+							</a>
+						</ons-list-header>
+					</div>
+					<div class="collapse sttm" id="setintm"></div>
+					<div data-toggle="collapse" data-target="#srvlist" aria-expanded="false" aria-controls="srvlist">
+						<ons-list-header>
+							<ons-icon icon="ion-android-arrow-dropdown" size="32px"></ons-icon>
+							Seved Server List
+							</a>
+						</ons-list-header>
+					</div>
+					<div class="collapse srvlist" id="srvlist"></div>
+					<div data-toggle="collapse" data-target="#setps" aria-expanded="false" aria-controls="setps">
+						<ons-list-header>
+							<ons-icon icon="ion-android-arrow-dropdown" size="32px"></ons-icon>
+							Atur Akun
+							</a>
+						</ons-list-header>
+					</div>
+					<div class="collapse stps" id="setps">
+						<div style="text-align: center; margin-top: 30px;">
+							<p>
+							  <ons-input id="usernameset" modifier="underbar" placeholder="Username" float></ons-input>
+							</p>
+							<p>
+							  <ons-input id="passwordset1" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+							</p>
+							<p>
+							  <ons-input id="passwordset2" modifier="underbar" type="password" placeholder="Confrim Password" float></ons-input>
+							</p>
+							<p style="margin-top: 30px;">
+							  <ons-button onclick="setaccount()">Rubah Account</ons-button>
+							</p>
+						</div>
+					</div>
+				</ons-list>
+			</div>
+    </template>
+	<script src="cordova.js"></script>
+	<script src="scripts/index.js"></script>
+	<script src="scripts/main.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+</body>
+</html>
