@@ -8,4 +8,4 @@
 <img src="images/startup.PNG"></img>
 <img src="images/uciconfig.PNG"></img>
 <img src="images/videoplayer.PNG"></img>
-<img src="images/saklar.png"></img>
+<img src="images/saklar.PNG"></img>
