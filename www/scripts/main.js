@@ -1,4 +1,4 @@
-﻿//post data
+//post data
 function GetPost(METHOD,ADDR,QUERY,OPT) {
     var xmlhttp = false, myObj, x;
     xmlhttp = new XMLHttpRequest();
@@ -234,7 +234,7 @@ function saklar(param, gpio, nama, tm1, tm2, stats, timet){
 		pgeset+="		<ons-button class=\"small\" onclick=\"changename("+gpio+");\">submit</ons-button>";
 		pgeset+="	</div>";
 		pgeset+="	<div class=\"center\">";
-		pgeset+="		<ons-input id=\"name"+gpio+"\" modifier=\"underbar\" value=\""+nama+"\" placeholder=\"nama saklar\" float></ons-input>";
+		pgeset+="		<input class='form-control' type='text' id=\"name"+gpio+"\" value=\""+nama+"\" placeholder=\"nama saklar\" ></input>";
 		pgeset+="	</div>";
 		pgeset+="</ons-list-item>";
 		
@@ -436,4 +436,26 @@ function setaccount(){
 		GetPost("POST",addr,"/cgi-bin/smarthome?login=set&user="+user1+"&pass="+pass1,"SAKLAR");
 		ons.notification.toast({message: "user dirubah jadi "+user1+" dan password"+ pass1, timeout: 5000});
 	}
+}
+//about
+function about(){
+	var abt=document.getElementById("img-ab");
+	var txt ="";
+	txt +="<div class=\"alert-dialog-mask\"></div>";
+	txt +="<div class=\"alert-dialog\">";
+	txt +="  <div class=\"alert-dialog-container\">";
+	txt +="	<div class=\"alert-dialog-content\">";
+	txt +="	 	<p><h3>fdi felexindo</h3></p>";
+	txt +="	 	<p><a href='http://www.facebook.com/friyadhibiermann'>created by friyadhibiermann</a></p>";
+	txt +="	</div>";
+	txt +="	<div class=\"alert-dialog-footer\">";
+	txt +="	  <button onclick='closeabt();' class=\"alert-dialog-button alert-dialog-button--primal\">OK</button>";
+	txt +="	</div>";
+	txt +="  </div>";
+	txt +="</div>";
+	abt.innerHTML = txt;
+}
+function closeabt(){
+	var abt=document.getElementById("img-ab");
+	abt.innerHTML = "";
 }
