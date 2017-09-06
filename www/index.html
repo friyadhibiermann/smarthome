@@ -31,9 +31,10 @@
             </ons-splitter>
             <template id="home.html">
                 <ons-page modifier="full_bg img-circle ratio pulse" >
+					<div id='img-ab'></div>
                     <div class="navigation-bar navigation-bar--noshadow">
                         <div class="navigation-bar__left">
-                            <span onclick="fn.open();" class="toolbar-button--quiet">
+                            <span onclick="about()" class="toolbar-button--quiet">
                                 <img src="img/fdi.png" width="32px" height="32px"><img>
                             </span>
                         </div>
@@ -51,13 +52,13 @@
                         <div style="text-align: center">
                             <div id="loginform" style="text-align: center; margin-top: 30px;">
                                 <span>
-                                    <input id="username" class="text-input--material" placeholder="Username" type="text" required>
+                                    <input id="username" class='text-input--material' placeholder="Username" type="text" required>
                                     <br /><br />
-                                    <input id="password" class="text-input--material" placeholder="Password" type="password" required>
+                                    <input id="password" class='text-input--material' placeholder="Password" type="password" required>
                                     <br /><br />
-                                    <input id="address" class="text-input--material" placeholder="192.168.1.1" type="text" required>
+                                    <input id="address" class='text-input--material' placeholder="192.168.1.1" type="text" required>
 									<br /><br />
-                                    <input id="servernanme" class="text-input--material" placeholder="MyServer" type="text" required>
+                                    <input id="servernanme" class='text-input--material' placeholder="MyServer" type="text" required>
                                 </span>
                                 <p style="margin-top: 30px;">
                                    <ons-button class="login1" onclick="login();">Sign in</ons-button>
@@ -182,13 +183,13 @@
 					<div class="collapse stps" id="setps">
 						<div style="text-align: center; margin-top: 30px;">
 							<p>
-							  <ons-input id="usernameset" modifier="underbar" placeholder="Username" float></ons-input>
+							  <input id="usernameset" class='form-control' type='text' placeholder="Username" required></input>
 							</p>
 							<p>
-							  <ons-input id="passwordset1" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+							  <input id="passwordset1" class='form-control' type="password" placeholder="Password" required></input>
 							</p>
 							<p>
-							  <ons-input id="passwordset2" modifier="underbar" type="password" placeholder="Confrim Password" float></ons-input>
+							  <input id="passwordset2" class='form-control' type="password" placeholder="Confrim Password" required></input>
 							</p>
 							<p style="margin-top: 30px;">
 							  <ons-button onclick="setaccount()">Rubah Account</ons-button>
