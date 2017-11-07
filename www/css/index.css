@@ -742,9 +742,9 @@ border-radius:7px 7px 7px 7px ;
 }
 .playlist{
 	background:rgba(4, 164, 213, 1.0);
-	max-width:360px;
-	min-width:300px;
-	height:320px;
+	max-width:300px;
+	min-width:200px;
+	height:200px;
 	padding:5px;
 	background-color: #071c4d;
 }
@@ -753,9 +753,9 @@ border-radius:7px 7px 7px 7px ;
 }
 .playlistv{
 	background:rgba(4, 164, 213, 1.0);
-	max-width:360px;
-	min-width:300px;
-	height:320px;
+	max-width:300px;
+	min-width:200px;
+	height:200px;
 	padding:5px;
 	background-color: #071c4d;
 }
